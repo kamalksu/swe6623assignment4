@@ -18,11 +18,51 @@
             <a class="nav-link link-light" href="/children">Children</a>
           </li>
         </ul>
+        <img src="./home-top-image.png" class="img-fluid" alt="...">
       
         {% block content %}
         {% endblock %}
-      </div>   
-    <h1>Home</h1>
-    <p>Moral parent and child homepage</p>
+        
+        <h1>Home</h1>
+        <p>Moral parent and child homepage</p>
+        <hr>
+        <h2>Student / Moral Children looking for funds</h2>
+        <ul>
+            {% for x in all_children %}
+                <li> {{x.firstname}} {{x.lastname}}  {{x.date_of_birth}} {{x.fund_request_amount}}</li>
+            {% endfor%}
+        </ul>
+        <hr>
+        <div>
+            <div>
+                <img src="" class="img-fluid" alt="...">
+                STUDENT / MORAL CHILD 
+                Apply for a fund and becomre a moral child 
+                <button onclick="window.location.href='/child';">
+                    Apply
+                </button>
+            </div>
+            <div>
+                <img src="" class="img-fluid" alt="...">
+                DONOR  / MORAL PARENT 
+                Donate and take resposibility of children.  
+                <button onclick="window.location.href='/parent';">
+                    Apply
+                </button>
+            </div>
+            <div>
+                <img src="" class="img-fluid" alt="...">
+                VOLUNTEER  
+                Check background and approve moral parent moral child 
+                <button onclick="window.location.href='/volunteer';">
+                    Apply
+                </button>
+            </div>
+
+
+        </div>
+        <hr>
+
+    </div> 
 </body>
 </html>
