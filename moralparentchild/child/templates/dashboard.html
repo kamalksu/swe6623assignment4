@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+
+ 
+
+    {% block title %}Moral Child{% endblock %}
+
+    
+      
+        {% block content %}
+
+        <div class="container">
+            <ul class="nav bg-info">
+              <li class="nav-item">
+                <a class="nav-link link-light" href="/">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link-light" href="/children">Children</a>
+              </li>
+            </ul>
+            
+        {% if user.is_authenticated %}
+          Hi {{ user.username }}!
+        {% else %}
+          <p>You are not logged in</p>
+          <a href="{% url 'login' %}">Log In</a>
+        {% endif %}
+        <p>Moral Child Dashboard</p>
+        <hr>
+        <h2>Student / Moral Children looking for funds</h2>
+     
+        <hr>
+        <div>
+               <div>
+                <p> Name : </p>
+                <p> Address : </p>
+                <p> School : </p>
+                <p> Grade : </p>
+                <p> Phone : </p>
+                <p> Email : </p>
+                <p> Description : </p>
+               </div> 
+
+
+        </div>
+        <hr>
+
+    </div> 
+
+        {% endblock %}
+        
+     
