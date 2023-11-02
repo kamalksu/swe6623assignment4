@@ -25,7 +25,7 @@ def child_apply(request):
     if form.is_valid():
         firstname = form.cleaned_data['firstname']  
         lastname = form.cleaned_data['lastname']
-        address = form.cleaned_data['zip_code']
+        address = form.cleaned_data['address']
         state = form.cleaned_data['state']
         country = form.cleaned_data['country']
         phone = form.cleaned_data['phone']

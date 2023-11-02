@@ -37,7 +37,6 @@
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Address</th>
                 <th scope="col">Date of Birth</th>
@@ -49,13 +48,12 @@
             <tbody>
                 {% for x in all_children %}
               <tr>
-                <th scope="row">{{x.id}}</th>
                 <td>{{x.firstname}} {{x.lastname}}</td>
                 <td>{{x.address}} {{x.country}}</td>
                 <td>{{x.date_of_birth}}</td>
                 <td>{{x.fund_request_amount}}</td>
                 <td>{{x.application_date}}</td>
-                <td> View </td>    
+                <td> <a href="{% url 'childview' x.id %}"> View </a></td>    
               </tr>
               {% endfor%}
             </tbody>
