@@ -9,11 +9,11 @@ from django.contrib import messages
 # Create your views here.
 
 def children(request):
-    all_children = Child.objects.all().values()
+    login_id = 'child1'
+    child = Child.objects.get(login_id=login_id)
     template = loader.get_template('dashboard.html')
-    #return HttpResponse("This is the Children page")
     context = {
-        'all_children' : all_children,
+        'child' : child,
     }    
     return HttpResponse(template.render(context,request))
 

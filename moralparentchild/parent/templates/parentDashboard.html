@@ -1,28 +1,113 @@
-<!DOCTYPE html>
 
-<html>
-<head>
+{% extends "base.html" %}
+{% load static %}
+ 
 
-    {% load bootstrap5 %}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}   
-</head>
+    {% block title %}Moral Child{% endblock %}
 
-<body>
-    <div class="container">
-        <ul class="nav bg-info">
-          <li class="nav-item">
-            <a class="nav-link link-light" href="/">HOME</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-light" href="/children">Children</a>
-          </li>
-        </ul>
+    
       
         {% block content %}
+
+        <div class="container">
+            <ul class="nav bg-info">
+              <li class="nav-item">
+                <a class="nav-link link-light" href="/">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link-light" href="/children">Children</a>
+              </li>
+            </ul>
+            
+        {% if user.is_authenticated %}
+          Hi {{ user.username }}!
+        {% else %}
+          <p>You are not logged in</p>
+          <a href="{% url 'login' %}">Log In</a>
+        {% endif %}
+        <p>Moral Parent Dashboard</p>
+        <hr>
+        <h2>Hello {{parent.firstname}} {{parent.lastname}}</h2>
+     
+        <hr>
+        <p>Application detail from Parent</p>
+    
+        <hr>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8">
+              <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <td>ID</td>
+                      <td>{{parent.id}} </td>
+                    </tr>    
+                      <tr>
+                      <td>Name</td>
+                      <td>{{parent.firstname}} {{parent.firstname}}</td>
+                    </tr>
+                    <tr>
+                      <td>Address</td>
+                      <td>{{parent.address}}</td>
+                    </tr>
+                    <tr>
+                      <td>State</td>
+                      <td>{{parent.state}}</td>
+                    </tr>
+                    <tr>
+                      <td>Country</td>
+                      <td>{{parent.country}}</td>
+                    </tr>
+                    <tr>
+                      <td>Zip</td>
+                      <td>{{parent.zip_code}}</td>
+                    </tr>
+                    <tr>
+                      <td>Phone</td>
+                      <td>{{parent.phone}}</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td>{{parent.email}}</td>
+                    </tr>                      
+                    <tr>
+                      <td>Profession</td>
+                      <td>{{parent.profession}}</td>
+                    </tr>
+                    <tr>
+                      <td>Possible Funding</td>
+                      <td>{{parent.possible_funding}}</td>
+                    </tr>
+                    <tr>
+                      <td>Fund Request Amount</td>
+                      <td>{{child.fund_request_amount}}</td>
+                    </tr>
+                    <tr>
+                      <td>More About Parent</td>
+                      <td>{{parent.desription}}</td>
+                    </tr>
+                    <tr>
+                      <td>Supporting Document</td>
+                        
+                      <td> {% if parent.supporting_document1 %} <a href="{{ parent.supporting_document1.url }}"> Suporting Document </a>  {% else %} No Supporting Document is provided. {% endif %}</td>
+                     
+                    </tr>
+                    <tr>
+                      <td>Supporting Document</td>
+                      <td> {% if parent.supporting_document2 %} <a href="{{ parent.supporting_document2.url }}"> Suporting Document </a>  {% else %} No Supporting Document is provided. {% endif %}</td>
+                    </tr>                                                                                        
+                  </tbody>
+                </table> 
+            </div>              
+            {% if parent.photo %}
+              <div class="col-sm-4"><img src="{{ parent.photo.url }}" alt="Parent img" class="image-fluid img-thumbnail rounded mx-auto d-block"></div>
+            {% else %}
+              <div class="col-sm-4"><img src="{% static 'no-photo.png' %}" alt="No Photo is provided" class="image-fluid img-thumbnail rounded mx-auto d-block"></div>
+            {% endif %}
+          </div>
+          <hr>
+        </div>
+
         {% endblock %}
-      </div>   
-    <h1>Parent's Dashboard</h1>
-    <p>This is a dashboard for the Moral Parents</p>
-</body>
-</html>
+        
+     

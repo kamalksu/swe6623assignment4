@@ -4,12 +4,18 @@ from django.http import HttpResponse
 from django.template import loader
 from .forms import Parentform
 from django.contrib import messages
+from .models import Parent
 
 # Create your views here.
 
 def parents(request): 
+    login_id = 'parent1'
+    parent = Parent.objects.get(login_id=login_id)
     template = loader.get_template('parentDashboard.html')
-    return HttpResponse(template.render())
+    context = {
+       'parent' : parent 
+    }
+    return HttpResponse(template.render(context,request))
 
 
 def parent_apply(request):
