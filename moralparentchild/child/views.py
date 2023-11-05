@@ -8,9 +8,9 @@ from django.contrib import messages
 
 # Create your views here.
 
-def children(request):
-    login_id = 'child1'
-    child = Child.objects.get(login_id=login_id)
+def children(request, id):
+    #login_id = 'child1'
+    child = Child.objects.get(id=id)
     template = loader.get_template('dashboard.html')
     context = {
         'child' : child,

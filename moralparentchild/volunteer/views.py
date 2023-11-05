@@ -4,21 +4,28 @@ from .form import Volunteerform, ChildApprovalForm, ParentApprovalForm
 from .models import Volunteer
 from django.contrib import messages
 from child.models import Child, ListofMoralChild
-from parent.models import Parent
+from parent.models import Parent, ListofMoralParent
 from django.template import loader
 
 # Create your views here.
 
-def volunteers(request):
+def volunteers(request, id):
     login_id = 'volunteer1'
-    volunteer = Volunteer.objects.get(login_id=login_id)
+    #volunteer = Volunteer.objects.get(login_id=login_id)
+    volunteer = Volunteer.objects.get(id=id)
     all_children = Child.objects.all().values()
     all_parents = Parent.objects.all().values()
+
+    all_children_approved = ListofMoralChild.objects.all().values()
+    all_parents_approved = ListofMoralParent.objects.all().values()
 
     context = {
         'volunteer' : volunteer,
         'all_children' : all_children,
-        'all_parents' : all_parents
+        'all_parents' : all_parents,
+        'all_children_approved' : all_children_approved,
+        'all_parents_approved' : all_parents_approved
+
     }
     return render(request,"dashboard_volunteer.html", context)
 

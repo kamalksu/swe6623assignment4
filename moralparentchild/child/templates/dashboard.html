@@ -15,21 +15,25 @@
                 <a class="nav-link link-light" href="/">HOME</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link link-light" href="/children">Children</a>
+                <a class="nav-link link-light" href="/children/1">Children</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link-light" href="/parents/1">Parent</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link-light" href="/volunteers/1">Volunteer</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link-light" href="/children/login/">Login</a>
               </li>
             </ul>
             
-        {% if user.is_authenticated %}
-          Hi {{ user.username }}!
-        {% else %}
-          <p>You are not logged in</p>
-          <a href="{% url 'login' %}">Log In</a>
-        {% endif %}
         <p>Moral Child Dashboard</p>
         <hr>
         <h2>Hello {{child.firstname}} {{child.lastname}}</h2>
      
         <hr>
+        <p> Your application </p>
         <div class="container">
           <div class="row">
             <div class="col-sm-8">

@@ -7,10 +7,16 @@
         <a class="nav-link link-light" href="/">HOME</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link link-light" href="/children">Children</a>
+        <a class="nav-link link-light" href="/children/1">Children</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link link-light" href="/parents">Parents</a>
+        <a class="nav-link link-light" href="/parents/1">Parents</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-light" href="/volunteers/1">Volunteer</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-light" href="/children/login/">Login</a>
       </li>
     </ul>
     <p> Volunteer dashboard</p>
@@ -70,10 +76,57 @@
     </table>
  
     <hr>
-
-    Moral Child(s)
-
-    Moral Parent(s)
+    List of approved moral child. 
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Child Name</th>
+          <th scope="col">Background Checked</th>
+          <th scope="col">Fund Approved</th>
+          <th scope="col">Parent Assigned</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for x in all_children_approved %}
+        <tr>
+          <td>{{x.child_id}} </td>
+          <td>{{x.background_checked}}</td>
+          <td>{{x.fund_approved}}</td>
+          <td>{{x.parent_id}}</td>
+          <td> <a href="{% url 'parent_detail' x.id %}"> Update </a></td>    
+        </tr>
+        {% endfor%}
+      </tbody>
+    </table>
+    <hr>
+    List of Approved Moral Parent(s)
+    <hr>
+    List of approved moral child. 
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Parent Name</th>
+          <th scope="col">Possible funding per month</th>
+          <th scope="col">Donationa Approved</th>
+          <th scope="col">Child Assigned</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for x in all_parents_approved %}
+        <tr>
+          <td>{{x.parent_id}} </td>
+          <td>{{x.possible_funding}}</td>
+          <td>{{x.approved}}</td>
+          <td>{{x.child_id}}</td>
+          <td> <a href="{% url 'parent_detail' x.id %}"> Update </a></td>    
+        </tr>
+        {% endfor%}
+      </tbody>
+    </table>
+    <hr>
+    
  
 <div>
 
