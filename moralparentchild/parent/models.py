@@ -1,6 +1,8 @@
 from django.db import models
 import datetime
 
+#from child.models import Child
+
 # Create your models here.
 
 class Parent(models.Model):
@@ -28,3 +30,17 @@ class Parent(models.Model):
 
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
+    
+
+
+class ListofMoralParent(models.Model):
+    possible_funding = models.IntegerField(null=True, blank=True)
+    parent_id = models.ForeignKey(Parent, default=1, verbose_name="Parent Name", on_delete=models.SET_DEFAULT)
+    background_checked = models.BooleanField(null=True, default=False)
+    approved = models.BooleanField(null=True, default=False)
+    comments = models.TextField(max_length=400, null=True, blank=True )
+    child_id = models.CharField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.parent_id}"
+

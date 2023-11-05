@@ -1,12 +1,26 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .form import Volunteerform
+from .form import Volunteerform, ChildApprovalForm, ParentApprovalForm
+from .models import Volunteer
 from django.contrib import messages
+from child.models import Child, ListofMoralChild
+from parent.models import Parent
+from django.template import loader
 
 # Create your views here.
 
 def volunteers(request):
-    return HttpResponse("This is volunteer page")
+    login_id = 'volunteer1'
+    volunteer = Volunteer.objects.get(login_id=login_id)
+    all_children = Child.objects.all().values()
+    all_parents = Parent.objects.all().values()
+
+    context = {
+        'volunteer' : volunteer,
+        'all_children' : all_children,
+        'all_parents' : all_parents
+    }
+    return render(request,"dashboard_volunteer.html", context)
 
 
 
@@ -36,3 +50,45 @@ def volunteer_apply(request):
     context['form'] = form
 
     return render(request, "apply.html", context ) 
+
+def child_detail(request, id):
+    login_id = 'volunteer1'
+    volunteer = Volunteer.objects.get(login_id=login_id)
+    child = Child.objects.get(id=id)
+    #list_of_moral_child = ListofMoralChild.objects.get(id=id) 
+    form = ChildApprovalForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        fund_approved = form.cleaned_data['fund_approved']
+        form.save()
+        form = ChildApprovalForm()
+        messages.success(request, 'Child approval process completed. ')
+    template = loader.get_template('child_approval.html')
+
+    context = {
+        'child' : child,
+        'volunteer' : volunteer,
+        'form' : form
+    }
+    return HttpResponse(template.render(context,request))
+
+
+
+def parent_detail(request, id):
+    login_id = 'volunteer1'
+    volunteer = Volunteer.objects.get(login_id=login_id)
+    parent = Parent.objects.get(id=id)
+    #list_of_moral_child = ListofMoralChild.objects.get(id=id) 
+    form = ParentApprovalForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        possible_funding = form.cleaned_data['possible_funding']
+        form.save()
+        form = ParentApprovalForm()
+        messages.success(request, 'Parent approval process completed. ')
+    template = loader.get_template('parent_approval.html')
+
+    context = {
+        'parent' : parent,
+        'volunteer' : volunteer,
+        'form' : form
+    }
+    return HttpResponse(template.render(context,request))

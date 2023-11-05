@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <ul class="nav bg-info">
+      <li class="nav-item">
+        <a class="nav-link link-light" href="/">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-light" href="/children">Children</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link link-light" href="/parents">Parents</a>
+      </li>
+    </ul>
+    <p> Volunteer dashboard</p>
+    <p> Hello ,{{volunteer.firstname}}</p>
+    
+    <hr>
+    List of student or moral child applied. 
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">Fund Requested</th>
+          <th scope="col">Application Date</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for x in all_children %}
+        <tr>
+          <td>{{x.firstname}} {{x.lastname}}</td>
+          <td>{{x.address}} {{x.country}}</td>
+          <td>{{x.date_of_birth}}</td>
+          <td>{{x.fund_request_amount}}</td>
+          <td>{{x.application_date}}</td>
+          <td> <a href="{% url 'child_detail' x.id %}"> View </a></td>    
+        </tr>
+        {% endfor%}
+      </tbody>
+    </table>
+    List of donor or moral parent applied. 
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Profession</th>
+          <th scope="col">Possible Funding</th>
+          <th scope="col">Application Date</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for x in all_parents %}
+        <tr>
+          <td>{{x.firstname}} {{x.lastname}}</td>
+          <td>{{x.address}} {{x.country}}</td>
+          <td>{{x.profession}}</td>
+          <td>{{x.possible_funding}}</td>
+          <td>{{x.application_date}}</td>
+          <td> <a href="{% url 'parent_detail' x.id %}"> View </a></td>    
+        </tr>
+        {% endfor%}
+      </tbody>
+    </table>
+ 
+    <hr>
+
+    Moral Child(s)
+
+    Moral Parent(s)
+ 
+<div>
+
+    {% endblock %}
