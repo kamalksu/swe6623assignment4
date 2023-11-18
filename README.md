@@ -1,5 +1,4 @@
-# swe6623assignment4
-Moral Parenting Platform development 
+# Moral Parenting Platform development 
 
 By Zularbine Kamal
 Student, MS in Software Engineering
