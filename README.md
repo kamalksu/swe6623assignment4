@@ -19,10 +19,15 @@ MacOS Users:
 Open the terminal or command prompt
 
 $ python3 -m venv env
+
 $ source env/bin/activate
+
 $ git clone https://github.com/kamalksu/swe6623assignment4.git
+
 $ cd moralparentchild
+
 $ pip install -r requirements.txt
+
 $ python manage.py runserver
 
 Open the browser and go to http://127.0.0.1:8000/
@@ -31,10 +36,15 @@ Windows Users:
 Open Windows command prompt
 
 ..\> py -m venv env
+
 ..\> .\env\Scripts\activate
+
 ..\> git clone https://github.com/kamalksu/swe6623assignment4.git
+
 ..\> cd moralparentchild
+
 ..\> pip install -r requirements.txt
+
 ..\> py manage.py runserver
 
 Open the browser and go to http://127.0.0.1:8000/
