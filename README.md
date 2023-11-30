@@ -20,6 +20,15 @@ The research is done mostly through evaluating different organization’s websit
 <img width="468" alt="image" src="https://github.com/kamalksu/swe6623assignment4/assets/148737439/00261d0a-8260-4fb7-bf1a-2fe0fda692b2">
 
 
+<img width="654" alt="Screenshot 2023-11-30 at 4 08 57 PM" src="https://github.com/kamalksu/swe6623assignment4/assets/148737439/bfcf4584-2090-4c8f-9278-ad6c2d5788c0">
+
+<img width="651" alt="Screenshot 2023-11-30 at 4 09 19 PM" src="https://github.com/kamalksu/swe6623assignment4/assets/148737439/2fd03b82-7c7d-4588-96d0-e5cd4cbcc6ae">
+
+
+<img width="654" alt="Screenshot 2023-11-30 at 4 09 48 PM" src="https://github.com/kamalksu/swe6623assignment4/assets/148737439/3bcc54f1-4fac-47c4-bd5f-de51f5f16f3f">
+
+
+
 Business Model
 
 The platform mostly will be used by non-profit organizations, so there is no direct business model is there. Some of the benefits this application can provide, 
